@@ -3,6 +3,7 @@
 <group android:checkableBehavior="single">
     <item
         android:id="@+id/nav_Mp3"
+        android:checked="true"
         android:icon="@mipmap/earport"
         android:title="音乐">
 

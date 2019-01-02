@@ -62,12 +62,24 @@
             android:src="@mipmap/saoma"
             />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="11dp"
+        android:src="@mipmap/btn_play"
+        android:background="@null"/>
 </RelativeLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nv_main_navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/drawer_view" />
 </android.support.v4.widget.DrawerLayout>

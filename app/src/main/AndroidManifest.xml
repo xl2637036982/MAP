@@ -22,6 +22,7 @@
     //获取统计数据
     <uses-permission android:name="android.permission.CAMERA" />
     //使用步行AR导航，配置Camera权限
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
