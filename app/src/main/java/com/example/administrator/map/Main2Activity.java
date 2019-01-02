@@ -21,6 +21,7 @@ import java.util.List;
 
 public class Main2Activity extends AppCompatActivity {
 public LocationClient locationClient;
+
 private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
