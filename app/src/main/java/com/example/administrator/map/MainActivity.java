@@ -103,6 +103,10 @@ private  String name_song;
         List<String> permissionList = new ArrayList<>();
 
         if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             permissionList.add(Manifest.permission.READ_PHONE_STATE);
         }
