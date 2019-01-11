@@ -71,7 +71,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="17dp"
         android:layout_marginBottom="11dp"
-        android:src="@mipmap/btn_play"
+        android:src="@mipmap/btn_pause"
         android:background="@null"/>
 </RelativeLayout>
     <android.support.design.widget.NavigationView

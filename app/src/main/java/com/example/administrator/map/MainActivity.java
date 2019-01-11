@@ -45,14 +45,17 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private Song song;
-private MapView mapView;
-private LocationClient mLocationClient;
-private BaiduMap baiduMap;
-private boolean isFirstLocate = true;
-private TextView textView;
-private ImageButton btn_mp3;
-private    String url;
-private  String name_song;
+    private MapView mapView;
+    private LocationClient mLocationClient;
+    private BaiduMap baiduMap;
+    private boolean isFirstLocate = true;
+    private TextView textView;
+    private ImageButton btn_mp3;
+    private String url;
+    private int time;
+
+    private int m=(int) (Math.random()*100);
+    private  int n = m++;
     private MediaPlayer mediaPlayer;
     private  boolean a = true;
     @Override
@@ -83,12 +86,25 @@ private  String name_song;
                 Gson gson = new Gson();
                 song=gson.fromJson(s,Song.class);
                 if (song!=null&&song.getData()!=null){
-                    url = song.getData().getSongs().get((int) (Math.random()*100)).getUrl();
+                    url = song.getData().getSongs().get(m).getUrl();
+//                    time= song.getData().getSongs().get(m).getTime();
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Uri uri1 = Uri.parse(url);
+                            final Uri uri1 = Uri.parse(url);
                             mediaPlayer = MediaPlayer.create(MainActivity.this,uri1);
+                            mediaPlayer.start();
+                            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                @Override
+                                public void onCompletion(MediaPlayer mp) {
+
+                                  String url1 =song.getData().getSongs().get(n).getUrl();
+                                  Uri uri = Uri.parse(url1);
+                                   mediaPlayer=MediaPlayer.create(MainActivity.this,uri);
+                                   mediaPlayer.start();
+                                }
+                            });
                         }
                     });
                 }
@@ -126,23 +142,25 @@ private  String name_song;
             public void onClick(View v) {
 
                         if (a){
-                            Toast.makeText(MainActivity.this,"正在播放音乐",Toast.LENGTH_SHORT).show();
-                            btn_mp3.setImageResource(R.mipmap.btn_pause);
-                            mediaPlayer.start();
-                        }else {
+                            Toast.makeText(MainActivity.this,"音乐已暂停",Toast.LENGTH_SHORT).show();
                             btn_mp3.setImageResource(R.mipmap.btn_play);
                             mediaPlayer.pause();
+                        }else {
+                            btn_mp3.setImageResource(R.mipmap.btn_pause);
+                            mediaPlayer.start();
                         }
                         if (a){
                             a=false;
                         }else {
                             a=true;
                         }
+
                     }
                 });
 
 
     }
+
 
     private void requestLocation() {
         initLocation();
